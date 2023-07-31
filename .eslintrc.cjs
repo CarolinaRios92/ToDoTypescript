@@ -18,6 +18,8 @@ module.exports = {
         "react"
     ],
     rules: {
+        semi: [4, always],
+        "react/prop-types": "off",
         "react/react-in-jsx-scope": "off"
     }
 }
