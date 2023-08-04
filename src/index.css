@@ -1,3 +1,14 @@
 html {
     filter: invert(1)
 }
+
+.editTodo input {
+    height: 40px;
+    padding: 5px 10px;
+    margin-left: 50px;
+    font-size: 90%;
+    font-family: inherit;
+    font-weight: inherit;
+    border-radius: 5px;
+    border: 1px solid gray
+}

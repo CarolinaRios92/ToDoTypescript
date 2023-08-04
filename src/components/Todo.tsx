@@ -32,7 +32,7 @@ export const Todo: React.FC<Props> = ({id, title, completed, onRemoveTodo, onTog
             </label>
         )}
         {editMode && (
-            <form onSubmit={handleSubmit}>
+            <form className="editTodo" onSubmit={handleSubmit}>
                 <input 
                     type="text"
                     value={inputValue}
