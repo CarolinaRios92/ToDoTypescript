@@ -11,8 +11,8 @@ const App = (): JSX.Element => {
   const [filterSelected, setFilterSelected] = useState<FilterValue>(TODO_FILTERS.ALL)
   
   useEffect(() => {
-    if(todos.length < 0) return;
-        localStorage.setItem("todos", JSON.stringify(todos))
+    if(todos.length === 0) return;
+    localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
 
   useEffect(() => {
@@ -31,6 +31,10 @@ const App = (): JSX.Element => {
 
   const handleRemove = ({id}: TodoId): void => {
     const newTodos = todos.filter(todo => todo.id !== id);
+    if(newTodos.length === 0){
+        localStorage.setItem("todos", JSON.stringify(newTodos))
+    }
+    console.log(newTodos.length)
     setTodos(newTodos)
   }
 
