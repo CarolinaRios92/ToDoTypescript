@@ -1,27 +1,29 @@
-# React + TypeScript + Vite
+# Todo -> React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### Esta es una app para poder organizar tus tareas diarias.
 
-Currently, two official plugins are available:
+#### Realizada utilizando TypeScript, React y Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pantalla de Inicio:
 
-## Expanding the ESLint configuration
+#### Podes visualizar las tareas cargadas y en el input podes cargar nuevas.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<img src="./public/image-proyecto/home.png"/>
 
-- Configure the top-level `parserOptions` property like this:
+#### También haciendo click en el checkbox de cada tarea podes marcarla como completada
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+<img src="./public/image-proyecto/tarea-completada.png"/>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### Tenes la posibilidad de editar las tareas cargadas o eliminarlas
+
+<img src="./public/image-proyecto/editar-tarea.png"/>
+
+#### En el footer tenes el número de tareas pendientes y los botones para el filtrado por completadas y activas
+
+<img src="./public/image-proyecto/tareas-activas.png"/>
+
+<img src="./public/image-proyecto/tareas-completadas.png"/>
+
+### Les dejo el link al deploy y espero que les guste!
+
+### https://to-do-typescript-psi.vercel.app/
