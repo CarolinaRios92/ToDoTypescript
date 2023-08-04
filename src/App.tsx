@@ -11,14 +11,16 @@ const App = (): JSX.Element => {
   const [filterSelected, setFilterSelected] = useState<FilterValue>(TODO_FILTERS.ALL)
   
   useEffect(() => {
-    if(todos.length === 0) return;
+    if(todos.length < 0) return;
         localStorage.setItem("todos", JSON.stringify(todos))
   }, [todos])
 
   useEffect(() => {
     const storedTodos = localStorage.getItem("todos");
-    const todos = storedTodos !== null ? JSON.parse(storedTodos) : null
-    setTodos(todos);
+    if(storedTodos){
+        const todos = storedTodos !== null ? JSON.parse(storedTodos) : null
+        setTodos(todos);
+    }
   },[])
 
   const filterTodos = todos.filter(todo => {
