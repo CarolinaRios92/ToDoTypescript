@@ -71,8 +71,6 @@ const App = (): JSX.Element => {
     }
 
     const handleEditTodo = ({id, title} : Pick<TodoType, "id" | "title">): void => {
-        console.log(id)
-        console.log(title)
         const todoIndex = todos.findIndex((todo) => todo.id === id);
         if(todoIndex !== -1){
             const updateTodos = [...todos];
