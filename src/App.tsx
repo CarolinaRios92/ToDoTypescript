@@ -1,33 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Todos } from './components/Todos'
 import { FilterValue, TodoId, type Todo as TodoType } from './types'
 import { TODO_FILTERS } from './consts'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
-import { type TodoTitle } from './types'
-
-const mockTodos = [
-  {
-    id: '1',
-    title: 'todo 1',
-    completed: true
-  },
-  {
-    id: '2',
-    title: 'todo 2',
-    completed: false
-  },
-  {
-    id: '3',
-    title: 'todo 3',
-    completed: false
-  }
-]
+import { type TodoTitle} from './types'
 
 const App = (): JSX.Element => {
-  const [todos, setTodos] = useState(mockTodos);
+  const [todos, setTodos] = useState<TodoType[]>([]);
   const [filterSelected, setFilterSelected] = useState<FilterValue>(TODO_FILTERS.ALL)
   
+  useEffect(() => {
+    if(todos.length === 0) return;
+        localStorage.setItem("todos", JSON.stringify(todos))
+  }, [todos])
+
+  useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    const todos = storedTodos !== null ? JSON.parse(storedTodos) : null
+    setTodos(todos);
+  },[])
+
   const filterTodos = todos.filter(todo => {
     if(filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
     if(filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
@@ -76,6 +69,18 @@ const App = (): JSX.Element => {
         const newTodos = [...todos, newTodo];
         setTodos(newTodos)
     }
+
+    const handleEditTodo = ({id, title} : Pick<TodoType, "id" | "title">): void => {
+        console.log(id)
+        console.log(title)
+        const todoIndex = todos.findIndex((todo) => todo.id === id);
+        if(todoIndex !== -1){
+            const updateTodos = [...todos];
+            updateTodos[todoIndex].title = title;
+            setTodos(updateTodos)
+        }
+    }
+
   return (
     <div className='todoapp'>
         <Header onAddTodo={handleAddTodo}/>
@@ -83,6 +88,7 @@ const App = (): JSX.Element => {
             todos={filterTodos}
             onRemoveTodo={handleRemove} 
             onToggleCompleteTodo={handleCompleted}
+            onEditTodo={handleEditTodo}
         />
         <Footer
             activeCount={activeCount}
